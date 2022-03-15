@@ -1,0 +1,65 @@
+package com.example.gotoappjava.police.listpolice;
+
+import android.app.ListActivity;
+import android.app.SearchManager;
+import android.content.Intent;
+import android.net.Uri;
+import android.os.Bundle;
+import android.view.View;
+import android.widget.ArrayAdapter;
+import android.widget.ListView;
+
+import com.example.gotoappjava.MainActivity;
+
+public class RSDC extends ListActivity {
+    String[] listAction = new String[]{"Call Center", "SMS Center", "Driving Direction", "Website", "Info Google", "Exit"};
+    protected void onCreate(Bundle icicle){
+        super.onCreate(icicle);
+        this.setListAdapter(new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1,listAction));
+    }
+
+    protected void onListItemClick(ListView list, View view, int position, long id){
+        super.onListItemClick(list, view, position, id);
+        Object object = this.getListAdapter().getItem(position);
+        String pilih = object.toString();
+
+        getPilihan(pilih);
+    }
+
+    private void getPilihan(String pilih) {
+        try {
+            Intent intent= null;
+            switch (pilih){
+                case "Call Center":
+                    String nomorTelp = "tel:0761-00000";
+                    intent = new Intent(Intent.ACTION_DIAL, Uri.parse(nomorTelp));
+                    break;
+                case "SMS Center":
+                    String smsText = "Halo Ditlantas, saya ";
+                    intent = new Intent(Intent.ACTION_VIEW);
+                    intent.setData(Uri.parse("sms:081233333"));
+                    intent.putExtra("sms_body",smsText);
+                    break;
+                case "Driving Direction":
+                    String lokasi = "google.navigation:q=0.5434, 101.4392";
+                    intent = new Intent(Intent.ACTION_VIEW, Uri.parse(lokasi));
+                    break;
+                case "Website":
+                    String linkWeb = "https://presisi.ditlantaspoldariau.com/";
+                    intent = new Intent(Intent.ACTION_VIEW, Uri.parse(linkWeb));
+                    break;
+                case "Info Google":
+                    intent = new Intent(Intent.ACTION_WEB_SEARCH);
+                    intent.putExtra(SearchManager.QUERY, "RSDC Pekanbaru");
+                    break;
+                case "Exit":
+                    intent = new Intent(this, MainActivity.class);
+                    break;
+            }
+
+            startActivity(intent);
+        }catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+}

@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.example.gotoappjava" >
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.Gotoappjava" >
+        <activity
+            android:name=".MainActivity"
+            android:exported="true" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <!-- Hospital Activity-->
+        <activity android:name=".Hospital"></activity>
+        <activity android:name=".RSTNI"></activity>
+        <activity android:name=".Madani"></activity>
+        <activity android:name=".Syafira"></activity>
+
+        <!-- Police Station Activity-->
+        <activity android:name=".police.Police"></activity>
+        <activity android:name=".police.listpolice.PoldaRiau"></activity>
+        <activity android:name=".police.listpolice.PolresPekanbaru"></activity>
+        <activity android:name=".police.listpolice.RSDC"></activity>
+
+        <!-- Market Activity -->
+        <activity android:name=".market.Market"></activity>
+        <activity android:name=".market.listmarket.giantPanam"></activity>
+        <activity android:name=".market.listmarket.pasarBuah"></activity>
+        <activity android:name=".market.listmarket.hawaiiSwalayan"></activity>
+
+        <!-- School Activity-->
+        <activity android:name=".school.School"></activity>
+        <activity android:name=".school.listschool.asShofa"></activity>
+        <activity android:name=".school.listschool.ittihad"/>
+        <activity android:name=".school.listschool.uinsuska"/>
+    </application>
+
+</manifest>
